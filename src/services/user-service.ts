@@ -2,6 +2,7 @@ import { Transaction } from 'sequelize';
 import User, { UserCreationAttributes } from '../models/User';
 import sequelize from '../config/database';
 import bcrypt from 'bcryptjs';
+import { generateToken } from '../middlewares/jwt-service';
 class UserService{
     async createUser(data:UserCreationAttributes) {
         let transaction:Transaction | null = null;
@@ -41,6 +42,32 @@ class UserService{
            console.error("Error in getUserByEmail service");
            
            throw new Error("Error which fething user details by email");
+        }
+    }
+    async login(data:Partial<UserCreationAttributes>):Promise<any>{
+        try {
+            const {email,password}=data;
+            const findUser = await User.findOne({where:{email}})
+
+            if (!findUser || !findUser.password || !password) {
+                return null;
+            }
+
+            const passwordMatch = await bcrypt.compare(password, findUser.password);
+
+            if (!passwordMatch) {
+              return null;
+            }
+
+            const token = await generateToken(findUser.id)
+            console.log(token);
+            
+        
+            return {userId:findUser.id, token}
+
+        } catch (error) {
+            console.error("Error while logginIn");
+            throw new Error("Error in Login service")
         }
     }
 }
