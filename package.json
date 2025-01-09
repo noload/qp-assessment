@@ -7,7 +7,7 @@
     "build": "npx tsc",
     "start": "node dist/index.js",
     "dev": "nodemon src/index.ts",
-    "sequelize":"ts-node ./node_modules/ .bin/sequelize-cli"
+    "sequelize": "ts-node ./node_modules/ .bin/sequelize-cli"
   },
   "repository": {
     "type": "git",
@@ -21,15 +21,18 @@
   },
   "homepage": "https://github.com/noload/qp-assessment#readme",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "body-parser": "^1.20.3",
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
+    "joi": "^17.13.3",
     "mysql2": "^3.12.0",
     "sequelize": "^6.37.5",
     "sequelize-cli": "^6.6.2",
     "sequelize-typescript": "^2.1.6"
   },
   "devDependencies": {
+    "@types/bcryptjs": "^2.4.6",
     "@types/express": "^5.0.0",
     "@types/node": "^22.10.5",
     "@types/sequelize": "^4.28.20",

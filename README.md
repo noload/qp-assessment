@@ -19,13 +19,16 @@
 }
 
 ```
-- Once you've added database config as listed  above, go to the `src` folder from your terminal and execute `npx sequelize db:create` it create database for you.
+- Once you've added database config as listed  above, go to the `src` folder from your terminal and execute `npx sequelize db:create` it create database for you also  run `npx sequelize db:migrate`
 
 ## DB Design
 - Groceries Table
 - Users Table
     - Id
-    - 
+    - name
+    - email
+    - password
+    - role
 - Orders Table
 - Order_Items Table
 

@@ -1,7 +1,7 @@
 import express, { Express, Request, Response } from "express";
 import dotenv from "dotenv";
 import bodyParser from 'body-parser';
-import { createUser } from "./controller/User";
+import appRouter from "./routes/index"
 dotenv.config();
 
 const app: Express = express();
@@ -10,13 +10,13 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended:true}))
 
 
+app.use("/api",appRouter)
 app.get("/", (req: Request, res: Response) => {
   res.send("Express + TypeScript Server");
 });
 
 
 
-createUser();
 app.listen(port, () => {
   console.log(`[server]: Server is running at http://localhost:${port}`);
 });
