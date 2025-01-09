@@ -5,7 +5,7 @@
 - Execute `npm install` on the same path as of your root directory of downloaded project
 - Create a `.env` file in the  root directory and add the following enviroment variable
     - `PORT=3000`
-- Inside the `src/config` folder create a new file `config.json` and then add the following databases configuration
+- Inside the `src/config` folder create a new file `config.js` and then add the following databases configuration
 
 ```
 {
@@ -20,3 +20,14 @@
 
 ```
 - Once you've added database config as listed  above, go to the `src` folder from your terminal and execute `npx sequelize db:create` it create database for you.
+
+## DB Design
+- Groceries Table
+- Users Table
+    - Id
+    - 
+- Orders Table
+- Order_Items Table
+
+- A single `User` can place multiple `Orders`, but an `order` belongs to one `user`.
+- An `order` can consist of multiple `grocery items`, but each `order item` belongs to exactly one order.
