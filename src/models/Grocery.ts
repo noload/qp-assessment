@@ -54,3 +54,5 @@ Grocery.init(
   },
   { sequelize, modelName: "Grocery" }
 );
+export {GroceryCreationAttributes}
+export default Grocery
